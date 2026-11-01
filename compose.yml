@@ -1,6 +1,6 @@
 services:
   db:
-    image: mariadb:latest
+    image: mariadb:11.4
     container_name: student-db
     restart: unless-stopped
     ports:
@@ -12,6 +12,7 @@ services:
       - data:/var/lib/mysql
 
   backend:
+    image: r123mahajan/backend:latest
     build:
       context: ./backend
     container_name: student-backend
@@ -28,6 +29,7 @@ services:
       DB_PASSWORD: admin
 
   frontend:
+    image: r123mahajan/frontend:latest
     build:
       context: ./frontend
     container_name: student-frontend
